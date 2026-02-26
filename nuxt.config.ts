@@ -34,5 +34,14 @@ export default defineNuxtConfig({
         dir: './app/assets/icons'
       }
     ]
+  },
+
+  studio: {
+    route: '/admin',
+    repository: {
+      provider: 'github',
+      owner: 'davidabou',
+      repo: 'folio'
+    }
   }
 })
