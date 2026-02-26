@@ -1,0 +1,8 @@
+{
+  "name": "Arkadys",
+  "description": "Arkadys is a gamified educational platform designed to help children with dyslexia master reading through engaging mini-games.",
+  "type": "Website",
+  "stack": ["Nuxt", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL"],
+  "thumbnail": "/assets/works/arkadys.png",
+  "releaseDate": "2026-07-01"
+}

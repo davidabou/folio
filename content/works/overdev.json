@@ -1,0 +1,16 @@
+{
+  "name": "OverDev",
+  "description": "A platform that provides to the developers resources and tutorials to help them in their learning path and in their projects.",
+  "type": "Website",
+  "stack": [
+    "Nuxt",
+    "TypeScript",
+    "Tailwind CSS",
+    "Prisma",
+    "PostgreSQL",
+    "Stripe"
+  ],
+  "thumbnail": "/assets/works/overdev.png",
+  "url": "https://overdev.fr",
+  "releaseDate": "2025-04-25"
+}

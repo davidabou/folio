@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Overused Grotesk VF', sans-serif;
+  --font-serif: 'REVERIE', serif;
+}
