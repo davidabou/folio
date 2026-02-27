@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-
 export interface TimelineEvent {
   year: number
   icon: string
@@ -28,7 +26,6 @@ type TimelineTick = MainTick | MinorTick
 
 interface Props {
   events?: TimelineEvent[]
-  activeIndex?: number | null
   ticksBetween?: number
   leadingTicks?: number
   trailingTicks?: number
@@ -36,18 +33,26 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   events: () => [],
-  activeIndex: null,
   ticksBetween: 8,
   leadingTicks: 0,
   trailingTicks: 0
 })
 
-const emit = defineEmits<{
-  click: [index: number]
-}>()
-
 const hoverIndex = ref<number | null>(null)
 const exactHoverIndex = ref<number | null>(null)
+const clickedIndex = ref<number | null>(null)
+
+const activeIndex = computed(() => {
+  if (clickedIndex.value !== null) {
+    return clickedIndex.value
+  }
+
+  if (props.events && props.events.length > 0) {
+    return props.events.length - 1
+  }
+
+  return null
+})
 
 const MAJOR_MAX_HEIGHT = 42
 const MAJOR_MIN_HEIGHT = 24
@@ -106,29 +111,29 @@ const timelineData = computed<TimelineTick[]>(() => {
 
 const currentCenterIndex = computed(() => {
   if (hoverIndex.value !== null) return hoverIndex.value
-  if (props.activeIndex !== null)
-    return props.leadingTicks + props.activeIndex * step.value
+  if (activeIndex.value !== null)
+    return props.leadingTicks + activeIndex.value * step.value
   return null
 })
 
 const currentTargetIndex = computed(() => {
   if (exactHoverIndex.value !== null) return exactHoverIndex.value
-  if (props.activeIndex !== null)
-    return props.leadingTicks + props.activeIndex * step.value
+  if (activeIndex.value !== null)
+    return props.leadingTicks + activeIndex.value * step.value
   return -1
 })
 
 const activeTooltipEventIndex = computed(() => {
   if (hoverIndex.value !== null)
     return (hoverIndex.value - props.leadingTicks) / step.value
-  return props.activeIndex
+  return activeIndex.value
 })
 
-const getHeight = (tick: any) => {
+const getHeight = (tick: TimelineTick) => {
   const maxH = tick.isMain ? MAJOR_MAX_HEIGHT : MINOR_MAX_HEIGHT
   const minH = tick.isMain ? MAJOR_MIN_HEIGHT : MINOR_MIN_HEIGHT
 
-  if (currentCenterIndex.value === null) return `${maxH}px`
+  if (currentCenterIndex.value === null) return `${minH}px`
 
   const distance = Math.abs(tick.index - currentCenterIndex.value)
   if (distance === 0) return `${maxH}px`
@@ -162,8 +167,10 @@ const handleMouseLeave = () => {
   exactHoverIndex.value = null
 }
 
-const handleClick = (tick: any) => {
-  if (tick.isMain) emit('click', tick.eventIdx)
+const handleClick = (tick: TimelineTick) => {
+  if (tick.isMain) {
+    clickedIndex.value = tick.eventIdx
+  }
 }
 </script>
 
@@ -203,9 +210,9 @@ const handleClick = (tick: any) => {
           :transition="{ duration: 0.15, delay: 0.0875 }"
           @click.stop
         >
-          <span class="font-medium text-neutral-700">{{
-            tick.event.title
-          }}</span>
+          <span class="font-medium text-neutral-700">
+            {{ tick.event.title }}
+          </span>
           <p
             class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed mt-1"
           >
@@ -218,7 +225,9 @@ const handleClick = (tick: any) => {
         class="rounded transition-colors w-0.5 relative flex flex-col justify-end items-center pointer-events-none"
         :class="getBarColor(tick.index)"
         :initial="{
-          height: tick.isMain ? `${MAJOR_MIN_HEIGHT}px` : `${MINOR_MIN_HEIGHT}px`
+          height: tick.isMain
+            ? `${MAJOR_MIN_HEIGHT}px`
+            : `${MINOR_MIN_HEIGHT}px`
         }"
         :animate="{ height: getHeight(tick) }"
         :transition="{ type: 'spring', stiffness: 200, damping: 15 }"
