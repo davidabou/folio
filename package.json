@@ -12,6 +12,8 @@
     "lint:fix": "prettier . --write"
   },
   "dependencies": {
+    "@iconify-json/proicons": "^1.2.19",
+    "@iconify-json/simple-icons": "^1.2.71",
     "@nuxt/content": "^3.11.2",
     "@nuxt/fonts": "0.14.0",
     "@nuxt/icon": "2.2.1",
