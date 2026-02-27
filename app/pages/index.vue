@@ -9,6 +9,12 @@ if (!page.value) {
     statusMessage: 'Page not found'
   })
 }
+
+useSeoMeta({
+  title: page.value.title,
+  titleTemplate: '%s',
+  description: page.value.description
+})
 </script>
 
 <template>
