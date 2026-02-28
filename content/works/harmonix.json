@@ -2,7 +2,7 @@
   "name": "Harmonix",
   "description": "A TypeScript framework for building Discord bots, designed to be simple, efficient, and developer-friendly.",
   "type": "Framework",
-  "stack": ["TypeScript", "discord.js", "UnJS", "Rolldown"],
+  "stack": ["TypeScript", "discord.js", "UnJS"],
   "thumbnail": "/assets/works/harmonix.png",
   "url": "https://github.com/harmonix-js/harmonix",
   "releaseDate": "2024-05-12"

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: '404 - Page not found | David A.'
+  title: '404 - Page not found | David Abou'
 })
 </script>
 

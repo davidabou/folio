@@ -13,7 +13,7 @@ if (error.value) {
 </script>
 
 <template>
-  <div class="grid grid-cols-3 gap-x-4">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     <Tilt v-for="work in works" reverse :rotation-factor="8" :key="work.id">
       <NuxtLink class="group" target="_blank" :to="work.url">
         <div
@@ -21,6 +21,7 @@ if (error.value) {
         >
           <div class="aspect-video rounded-lg overflow-hidden">
             <NuxtImg
+              format="webp"
               class="flex items-center justify-center size-full font-serif text-neutral-700 bg-neutral-100 object-cover object-top"
               :src="work.thumbnail"
               :alt="work.name"

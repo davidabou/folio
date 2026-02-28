@@ -46,7 +46,7 @@ export default defineNuxtConfig({
 
   site: {
     url: 'https://abou.dev',
-    name: 'David A.',
+    name: 'David Abou',
     indexable: true
   },
 

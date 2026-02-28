@@ -196,7 +196,7 @@ const handleClick = (tick: TimelineTick) => {
           :class="
             activeTooltipEventIndex === tick.eventIdx
               ? 'text-neutral-700'
-              : 'text-neutral-400'
+              : 'text-neutral-500'
           "
         >
           {{ tick.event.year }}
@@ -213,9 +213,7 @@ const handleClick = (tick: TimelineTick) => {
           <span class="font-medium text-neutral-700">
             {{ tick.event.title }}
           </span>
-          <p
-            class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed mt-1"
-          >
+          <p class="text-xs text-neutral-500 leading-relaxed mt-1">
             {{ tick.event.description }}
           </p>
         </Motion>
@@ -238,7 +236,7 @@ const handleClick = (tick: TimelineTick) => {
           :class="
             activeTooltipEventIndex === tick.eventIdx
               ? 'text-neutral-700'
-              : 'text-neutral-400'
+              : 'text-neutral-500'
           "
         >
           <Icon :name="tick.event.icon" />

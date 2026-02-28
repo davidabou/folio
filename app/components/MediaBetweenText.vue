@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useInView, type VariantLabels, type VariantType } from 'motion-v'
+import type { VariantLabels, VariantType } from 'motion-v'
 
 interface MediaBetweenTextProps {
   firstText: string

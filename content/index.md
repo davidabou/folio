@@ -1,5 +1,7 @@
 ---
-title: David A. - Full-Stack Developer
+title: David Abou - Full-Stack Developer
+description: I craft high-performance web applications using modern technologies, with a dedicated focus on seamless user experiences.
+image: /assets/og.png
 ---
 
 ::hero
@@ -33,7 +35,7 @@ number: 1
   events:
     - year: 2019
       icon: proicons:code-square
-      title: The Code Revelation
+      title: The Revelation
       description: In 2019, I made first contact with HTML, CSS, and JavaScript. My
         first projects sparked my passion for web development.
     - year: 2020
@@ -49,15 +51,13 @@ number: 1
     - year: 2022
       icon: simple-icons:nuxt
       title: Nuxt Exploration
-      description: As I delved deeper into Vue.js, I came across Nuxt, a powerful
-        full-stack framework for server-side rendering.
+      description: As I delved deeper into Vue.js, I came across Nuxt which revolutionized my approach to web development.
     - year: 2024
       icon: custom:harmonix
       title: Harmonix Creation
-      description: Create Discord bots should be as intuitive as creating a Nuxt app.
-        That's why I created Harmonix.
+      description: Creating Discord bots should be as intuitive as creating a Nuxt application. That's why I created Harmonix.
     - year: 2025
-      icon: proicons:script
+      icon: proicons:rocket
       title: OverDev Launch
       description: I launched OverDev, a platform dedicated to providing development
         resources to help developers grow their skills and knowledge.
