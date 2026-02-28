@@ -24,8 +24,6 @@ useHead({
     }
   ]
 })
-
-defineOgImageComponent('Folio')
 </script>
 
 <template>

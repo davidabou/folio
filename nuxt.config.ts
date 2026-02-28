@@ -70,10 +70,6 @@ export default defineNuxtConfig({
     }
   },
 
-  ogImage: {
-    zeroRuntime: true
-  },
-
   llms: {
     domain: 'https://abou.dev',
     title: 'David A. - Full-Stack Developer',
