@@ -45,7 +45,7 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: 'https://abou.dev',
+    url: 'https://folio.abou.dev',
     name: 'David Abou',
     indexable: true
   },
@@ -71,7 +71,7 @@ export default defineNuxtConfig({
   },
 
   llms: {
-    domain: 'https://abou.dev',
+    domain: 'https://folio.abou.dev',
     title: 'David A. - Full-Stack Developer',
     description:
       'I craft high-performance web applications using modern technologies, with a dedicated focus on seamless user experiences.',
