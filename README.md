@@ -1,75 +1,92 @@
-# Nuxt Minimal Starter
+# Folio
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+My personal portfolio, live at **[folio.abou.dev](https://folio.abou.dev)**.
 
-## Setup
+A single-page site with my selected works, the timeline that got me here, and a way to [book a call](https://cal.com/david-abou/30min).
 
-Make sure to install dependencies:
+![Folio preview](public/assets/og.png)
+
+## Stack
+
+- [Nuxt 4](https://nuxt.com) with [Nuxt Content](https://content.nuxt.com) for all the page content
+- [Nuxt Studio](https://nuxt.studio) to edit the content from the browser (`/admin`)
+- [Tailwind CSS 4](https://tailwindcss.com) and [Motion for Vue](https://motion.dev/docs/vue) for styling and animations
+- [Nuxt SEO](https://nuxtseo.com) for meta tags, sitemap and robots
+- [nuxt-llms](https://github.com/nuxtlabs/nuxt-llms) to generate `llms.txt` and `llms-full.txt`
+- Deployed on [Vercel](https://vercel.com), with Vercel Analytics
+
+## Getting started
+
+Requires Node.js and [pnpm](https://pnpm.io).
 
 ```bash
-# npm
-npm install
-
-# pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+pnpm dev        # http://localhost:3000
 ```
 
-## Development Server
+| Command         | Description                          |
+| --------------- | ------------------------------------ |
+| `pnpm dev`      | Start the dev server                 |
+| `pnpm build`    | Build for production                 |
+| `pnpm generate` | Prerender the site as static files   |
+| `pnpm preview`  | Preview the production build locally |
+| `pnpm lint`     | Check formatting with Prettier       |
+| `pnpm lint:fix` | Fix formatting with Prettier         |
 
-Start the development server on `http://localhost:3000`:
+## Editing the content
 
-```bash
-# npm
-npm run dev
+Everything shown on the site lives in `content/`, so most updates need no code change.
 
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+```
+content/
+├── index.md        # Home page: hero, works section, timeline
+└── works/          # One JSON file per project
+    ├── arkadys.json
+    ├── harmonix.json
+    └── overdev.json
 ```
 
-## Production
+### Home page
 
-Build the application for production:
+`content/index.md` uses [MDC](https://content.nuxt.com/docs/files/markdown#mdc-syntax) components (`::hero`, `::section-item`, `:::timeline`). The props of each block (greetings, call-to-action link, timeline events…) are set in its YAML block.
 
-```bash
-# npm
-npm run build
+### Adding a project
 
-# pnpm
-pnpm build
+Create a new file in `content/works/`:
 
-# yarn
-yarn build
-
-# bun
-bun run build
+```json
+{
+  "name": "My project",
+  "description": "What it does, in one or two sentences.",
+  "category": "Website",
+  "stack": ["Nuxt", "TypeScript"],
+  "thumbnail": "/assets/works/my-project.png",
+  "url": "https://example.com",
+  "releaseDate": "2026-01-31"
+}
 ```
 
-Locally preview production build:
+Put the thumbnail in `public/assets/works/`. The schema is defined in `content.config.ts`.
 
-```bash
-# npm
-npm run preview
+### From the browser
 
-# pnpm
-pnpm preview
+Nuxt Studio is mounted on `/admin` and commits changes straight to this repository.
 
-# yarn
-yarn preview
+## Project structure
 
-# bun
-bun run preview
+```
+app/
+├── assets/         # Global CSS and custom SVG icons (custom: prefix)
+├── components/     # UI components (Works, Timeline, Tilt, LetterSwap…)
+│   └── content/    # Components used from Markdown (Hero, SectionItem)
+├── layouts/
+└── pages/
+content/            # Site content (see above)
+public/             # Fonts, images and Open Graph image
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Contact
+
+- Email: [hey@abou.dev](mailto:hey@abou.dev)
+- Book a call: [cal.com/david-abou/30min](https://cal.com/david-abou/30min)
+- Other projects: [abou.dev](https://abou.dev)
