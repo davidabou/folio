@@ -8,7 +8,7 @@ image: /assets/og.png
 ---
 cta:
   label: Book a call
-  link: https://www.cal.eu/davidabou/30min
+  link: https://cal.com/david-abou/30min
 greetings:
   - Salut
   - Hi

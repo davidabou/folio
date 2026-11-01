@@ -83,7 +83,7 @@ export default defineNuxtConfig({
     notes: [
       'Contact email: hey@abou.dev',
       'Current Role: Full-Stack Developer',
-      'Call to action: Book a 30min call via https://www.cal.eu/davidabou/30min'
+      'Call to action: Book a 30min call via https://cal.com/david-abou/30min'
     ],
     sections: [
       {
